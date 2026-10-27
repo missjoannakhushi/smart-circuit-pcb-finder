@@ -1,32 +1,38 @@
-# Smart Circuit & PCB Trace Short-Circuit Finder
+# ⚡ TraceStack: Advanced PCB Trace & Short-Circuit Fault Isolation System
 
-A Python-based project that uses a Stack (LIFO - Last In, First Out) to detect short circuits in a PCB trace grid.
+> **🚀 LIVE WEB DEMO:** [Click here to test the project live in your browser!](https://smart-circuit-pcb-finder-aqyjebzpkyvbtwgraiwsapp.streamlit.app)
 
-## Problem Statement
-In PCB design, even a small accidental connection between a copper trace and a power or ground rail can create a short circuit. Manual trace inspection is time-consuming and error-prone, especially in dense boards. This project automates the process by representing the PCB as a 2D grid and traversing it using a stack-based depth-first search.
+---
 
-## PCB Grid Representation
-- 0 = Empty fiberglass
-- 1 = Valid copper trace
-- 2 = Short-circuit node
+## 📌 Project Overview
+**TraceStack** is a data structures project designed to solve a critical hardware engineering problem: tracing conductive copper paths on Printed Circuit Boards (PCBs) to detect and isolate unintended short-circuit faults. 
 
-## Stack Logic
-We use a stack to simulate DFS:
-1. Push the starting coordinate
-2. Pop the top coordinate
-3. Check if the cell is a short-circuit node
-4. Visit neighbors if the cell is a valid trace
-5. Push unvisited valid neighbors onto the stack
-6. Repeat until the short is found or the stack becomes empty
+Instead of manual multimeters or visual inspections, this system utilizes a programmatic **Stack-based graph traversal (DFS)** algorithm to simulate automated circuit continuity scans.
 
-## Project Structure
-- `stack_engine.py` — Stack implementation and DFS logic
-- `main.py` — Tkinter GUI visualizer
-- `test_boards/` — Safe and faulty PCB test cases
-- `README.md` — Project documentation
+---
 
-## How to Run
-1. Clone the repo:
+## 🛠️ Data Structures & Algorithms Used
+* **Stack (LIFO - Last In, First Out):** Manages the traversal frontier using Depth-First Search, allowing the algorithm to dive deep into complex circuit branches sequentially.
+* **Visited Set (`O(1)` Lookups):** Keeps track of explored nodes to prevent infinite loops during traversal.
+* **Dynamic 2D Matrix (Grid Representation):** Represents PCB cells where:
+  * `0` = Empty / Non-conductive space (Dark background)
+  * `1` = Clean Copper Trace (Green)
+  * `2` = Short-Circuit Fault (Red/Purple)
+
+---
+
+## ✨ Key Features
+* **Dynamic Random Circuit Generation:** Generates organic, unique copper trace layouts and short-circuit fault positions on the fly.
+* **Multi-Fault Isolation:** Traverses the entire network to flag multiple short circuits rather than stopping blindly at the first fault.
+* **Dual Presentation Options:** Fully playable as an instant web app via Streamlit or as a local desktop app via Python/Tkinter.
+
+---
+
+## 💻 How to Run Locally
+
+If you wish to run the desktop application version on your machine:
+
+1. **Clone the repository:**
    ```bash
-   git clone https://github.com/your-username/smart-circuit-pcb-finder.git
+   git clone [https://github.com/missjoannakhushi/smart-circuit-pcb-finder.git](https://github.com/missjoannakhushi/smart-circuit-pcb-finder.git)
    cd smart-circuit-pcb-finder
